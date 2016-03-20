@@ -7,12 +7,6 @@ function profile {
   export RUBY_BUILD_CACHE_PATH="${BASEBOX_CACHE}/cache/ruby"
 
   mkdir -p "${RUBY_BUILD_CACHE_PATH}"
-
-  export RBENV_ROOT="$shome/.rbenv"
-
-  if [[ -x "${RBENV_ROOT}/bin/rbenv" ]]; then
-    eval "$(${RBENV_ROOT}/bin/rbenv init -)"
-  fi
 }
 
 profile
