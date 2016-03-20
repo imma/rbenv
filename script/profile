@@ -9,6 +9,8 @@ function profile {
   mkdir -p "${RUBY_BUILD_CACHE_PATH}"
 
   export RBENV_ROOT="$shome/.rbenv"
+
+  eval "$(rbenv init -)"
 }
 
 profile
