@@ -10,7 +10,9 @@ function profile {
 
   export RBENV_ROOT="$shome/.rbenv"
 
-  eval "$(rbenv init -)"
+  if [[ -x "${RBENV_ROOT}/bin/rbenv" ]]; then
+    eval "$(${RBENV_ROOT}/bin/rbenv init -)"
+  fi
 }
 
 profile
