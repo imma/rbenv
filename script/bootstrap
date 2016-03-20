@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function bootstrap {
+  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  if [[ ! -d "$shome/.rbenv" ]]; then
+    git clone git@github.com:rbenv/rbenv.git "$shome/.rbenv"
+  fi
+
+  if [[ ! -d "$shome/.ruby-build" ]]; then
+    git clone git@github.com:rbenv/ruby-build.git "$shome/.ruby-build"
+  fi
+}
+
+bootstrap
