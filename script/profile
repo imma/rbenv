@@ -5,8 +5,6 @@ function profile {
   PATH="$shome/.rbenv/bin:$shome/.ruby-build/bin:$PATH"
 
   export RUBY_BUILD_CACHE_PATH="${BASEBOX_CACHE}/cache/ruby"
-
-  mkdir -p "${RUBY_BUILD_CACHE_PATH}"
 }
 
 profile
