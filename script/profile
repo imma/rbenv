@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-function profile {
+function _rbenv_profile {
   local shome="${_rbenv_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/.rbenv/bin:$shome/.ruby-build/bin:$PATH"
 
   export RUBY_BUILD_CACHE_PATH="${BASEBOX_CACHE}/cache/ruby"
 }
 
-profile
+_rbenv_profile
