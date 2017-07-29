@@ -1,3 +1,4 @@
 /.rbenv/
 /.ruby-build/
-
+/bin/rbenv*
+/bin/ruby-build

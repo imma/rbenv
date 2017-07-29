@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
 function _rbenv_profile {
-  local shome="${_rbenv_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
-  PATH="$shome/.rbenv/bin:$shome/.ruby-build/bin:$PATH"
+  local shome="${_rbenv_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  PATH="$shome/bin:$shome/exec:$PATH"
+  #export ANSIBLE_ROLES_PATH="$shome/roles${ANSIBLE_ROLES_PATH:+:${ANSIBLE_ROLES_PATH}}"
+  #export ANSIBLE_LIBRARY="$shome/library${ANSIBLE_LIBRARY:+:${ANSIBLE_LIBRARY}}"
 
-  export RUBY_BUILD_CACHE_PATH="${BASEBOX_CACHE}/cache/ruby"
+  RBENV_VERSION='1.1.1'
+  RUBY_BUILD_VERSION='20170726'
 }
 
 _rbenv_profile

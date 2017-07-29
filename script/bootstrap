@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 
-function bootstrap {
+function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  mkdir -p "${RUBY_BUILD_CACHE_PATH}"
+  block compile gitsubmodule
 
-  if [[ ! -d "$shome/.rbenv" ]]; then
-    git clone git@github.com:rbenv/rbenv.git "$shome/.rbenv"
-  fi
+  cd "$shome/vendor/rbenv"
+  git reset --hard "v$RBENV_VERSION"
+  ln -nfs ../vendor/rbenv/bin/rbenv "$shome/bin/"
 
-  if [[ ! -d "$shome/.ruby-build" ]]; then
-    git clone git@github.com:rbenv/ruby-build.git "$shome/.ruby-build"
-  fi
+  cd "$shome/vendor/ruby-build"
+  git reset --hard "v$RUBY_BUILD_VERSION"
+  
+  cd "$shome/bin"
+  (set +f; ln -nfs ../vendor/ruby-build/bin/* "$shome/bin/")
 }
 
-bootstrap
+main "$@"
