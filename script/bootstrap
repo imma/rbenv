@@ -7,7 +7,7 @@ function main {
   block compile gitsubmodule
 
   cd "$shome/vendor/rbenv"
-  git reset --hard "v$RBENV_VERSION"
+  git reset --hard "v$RUBY_ENV_VERSION"
   ln -nfs ../vendor/rbenv/bin/rbenv "$shome/bin/"
 
   cd "$shome/vendor/ruby-build"
