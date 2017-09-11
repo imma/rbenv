@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+function main {
+  local BUILD_DIR="$1"; shift
+  local CACHE_DIR="$1"; shift
+  local ENV_DIR="$1"; shift
+
+  local ver_ruby="$(cat .ruby-version)"
+  local fl_first_time=
+
+  if [[ ! -d "${BOARD_PATH}/.rbenv.versions/${ver_ruby}" ]]; then
+    if [[ ! -d "${DATA}/cache/rbenv/${ver_ruby}" ]]; then
+      fl_first_time=1
+    fi
+  fi
+
+  if [[ -d "${DATA}/cache/rbenv/${ver_ruby}" ]]; then
+    (cd "${BOARD_PATH}" && tar xfz "${DATA}/cache/rbenv/${ver_ruby}")
+  else
+    rbenv install -s
+    gem install bundler --conservative -v "${BUNDLER_VERSION}"
+    gem update --system
+  fi
+
+  if [[ -n "$fl_first_time" ]]; then
+    (cd "${BOARD_PATH}" && tar cfz "${DATA}/cache/rbenv/${ver_ruby}" ".rbenv/versions/${ver_ruby}")
+  fi
+  rbenv install -s
+  gem install bundler --conservative -v "${BUNDLER_VERSION}"
+  gem update --system
+
+  if [[ -n "$fl_first_time" ]]; then
+    (cd "${BOARD_PATH}" && tar cvfz "${DATA}/cache/rbenv/${ver_ruby}" ".rbenv/versions/${ver_ruby}")
+  fi
+
+  mkdir -p "$SVDIR"
+
+  if [[ "$#" == 0 ]]; then
+    read_services | while read -r a; do
+      main $BUILD_DIR $CACHE_DIR $ENV_DIR "$a"
+    done
+    return 0
+  fi
+
+  local nm_service="$1"; shift
+  new_service "$nm_service" "$@"
+}
+
+source sub "$0" "$@"

@@ -2,7 +2,7 @@
 
 function _rbenv_profile {
   local shome="${_rbenv_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
-  PATH="${BOARD_PATH}/.rbenv/shims:$shome/bin:$PATH"
+  PATH="${BOARD_PATH}/.rbenv/shims:$shome/bin:$shome/exec:$PATH"
 }
 
 _rbenv_profile
