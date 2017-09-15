@@ -8,7 +8,7 @@ function main {
   local ver_ruby="$(cat .ruby-version)"
   local fl_first_time=
 
-  local pth_ruby_cache="${DATA}/cache/rbenv/${ver_ruby}-${GEM_VERSION}-${BUNDLER_VERSION}.tgz"
+  local pth_ruby_cache="${DATA}/cache/rbenv/${ver_ruby}-${GEM_VERSION}-${BUNDLER_VERSION}-${ID_INSTALL}.tgz"
 
   if [[ ! -d "${BOARD_PATH}/.rbenv.versions/${ver_ruby}" ]]; then
     if [[ ! -f "$pth_ruby_cache" ]]; then
