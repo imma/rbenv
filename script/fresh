@@ -10,7 +10,7 @@ function main {
 
   local sha="$(cd "$shome/vendor/ruby-build" && git rev-parse HEAD)"
   local nm_tags="$(cd "$shome/vendor/ruby-build" && git show-ref --tags | grep ^$sha | cut -d/ -f3- | xargs -- | sed 's# #,#g')"
-  if [[ "$nm_tags" != "$RUBY_BUILD_VERSION" ]]; then
+  if [[ "$nm_tags" != "v$RUBY_BUILD_VERSION" ]]; then
     return 1
   fi
 
