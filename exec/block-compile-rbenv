@@ -25,6 +25,7 @@ function main {
   fi
 
   if [[ -n "$fl_first_time" ]]; then
+    mkdir -p "${DATA}/cache/rbenv"
     (cd "${BOARD_PATH}" && tar cfz "$pth_ruby_cache" ".rbenv/versions/${ver_ruby}")
   fi
 }
