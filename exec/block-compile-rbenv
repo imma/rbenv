@@ -18,9 +18,12 @@ function main {
 
   if [[ -f "$pth_ruby_cache" ]]; then
     (cd "${BOARD_PATH}" && tar xfz "$pth_ruby_cache")
+    rbenv rehash
   else
     rbenv install -s
+    rbenv rehash
     gem install bundler --conservative -v "${BUNDLER_VERSION}"
+    rbenv rehash
     gem update --system
   fi
 
@@ -28,6 +31,8 @@ function main {
     mkdir -p "${DATA}/cache/rbenv"
     (cd "${BOARD_PATH}" && tar cfz "$pth_ruby_cache" ".rbenv/versions/${ver_ruby}")
   fi
+
+  rbenv rehash
 }
 
 source sub "$0" "$@"
