@@ -11,9 +11,9 @@ function main {
   local pth_ruby_cache="${DATA}/cache/rbenv/${ver_ruby}-${GEM_VERSION}-${BUNDLER_VERSION}-${ID_INSTALL}.tgz"
 
   if [[ ! -d "${BOARD_PATH}/.rbenv.versions/${ver_ruby}" ]]; then
-    if [[ ! -f "$pth_ruby_cache" ]]; then
-      fl_first_time=1
-    fi
+    fl_first_time=1
+  elif [[ ! -f "$pth_ruby_cache" ]]; then
+    fl_first_time=1
   fi
 
   if [[ -f "$pth_ruby_cache" ]]; then
