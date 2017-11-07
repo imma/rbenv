@@ -10,12 +10,6 @@ function main {
 
   local pth_ruby_cache="${DATA}/cache/rbenv/${ver_ruby}-${GEM_VERSION}-${BUNDLER_VERSION}-${ID_INSTALL}.tgz"
 
-  if [[ ! -d "${BOARD_PATH}/.rbenv.versions/${ver_ruby}" ]]; then
-    fl_first_time=1
-  elif [[ ! -f "$pth_ruby_cache" ]]; then
-    fl_first_time=1
-  fi
-
   if [[ -f "$pth_ruby_cache" ]]; then
     (cd "${BOARD_PATH}" && gtar xfz "$pth_ruby_cache")
     rbenv rehash
@@ -25,9 +19,7 @@ function main {
     gem install bundler --conservative -v "${BUNDLER_VERSION}"
     rbenv rehash
     gem update --system
-  fi
 
-  if [[ -n "$fl_first_time" ]]; then
     mkdir -p "${DATA}/cache/rbenv"
     (cd "${BOARD_PATH}" && gtar cfz "$pth_ruby_cache" ".rbenv/versions/${ver_ruby}")
   fi
