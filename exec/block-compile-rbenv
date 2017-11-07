@@ -5,7 +5,7 @@ function main {
   local CACHE_DIR="$1"; shift
   local ENV_DIR="$1"; shift
 
-  local ver_ruby="$(cat .ruby-version)"
+  local ver_ruby="$(rbenv version | awk '{print $1}')"
   local fl_first_time=
 
   local pth_ruby_cache="${DATA}/cache/rbenv/${ver_ruby}-${GEM_VERSION}-${BUNDLER_VERSION}-${ID_INSTALL}.tgz"
