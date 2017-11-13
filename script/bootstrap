@@ -4,16 +4,16 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  block compile gitsubmodule
-
-  cd "$shome/vendor/rbenv"
-  git fetch
-  git reset --hard "v$RUBY_ENV_VERSION"
+  git clone -b "v${RUBY_ENV_VERSION}" git@github.com:rbenv/rbenv "$shome/vendor/rbenv-${RUBY_ENV_VERSION}" || true
+  rm -rf "$shome/vendor/rbenv"
+  ln -nfs "rbenv-${RUBY_ENV_VERSION}" "$shome/vendor/rbenv"
+  pushd "$shome/vendor/rbenv"
   ln -nfs ../vendor/rbenv/bin/rbenv "$shome/bin/"
+  popd
 
-  cd "$shome/vendor/ruby-build"
-  git fetch
-  git reset --hard "v$RUBY_BUILD_VERSION"
+  git clone -b "v${RUBY_BUILD_VERSION}" git@github.com:rbenv/ruby-build "$shome/vendor/ruby-build-${RUBY_BUILD_VERSION}" || true
+  rm -rf "$shome/vendor/ruby-build"
+  ln -nfs "ruby-build-${RUBY_BUILD_VERSION}" "$shome/vendor/ruby-build"
   
   cd "$shome/bin"
   (set +f; ln -nfs ../vendor/ruby-build/bin/* "$shome/bin/")
