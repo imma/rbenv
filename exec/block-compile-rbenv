@@ -16,8 +16,6 @@ function main {
   else
     rbenv install -s
     rbenv rehash
-    gem install bundler --conservative -v "${BUNDLER_VERSION}"
-    rbenv rehash
     gem update --system
 
     mkdir -p "${DATA}/cache/rbenv"
