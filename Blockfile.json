@@ -1,6 +1,5 @@
 {
-  "require": [
-  ],
+  "require": [],
   "versions": {
     "rbenv": "rbenv/rbenv",
     "ruby_build": "rbenv/ruby-build"
