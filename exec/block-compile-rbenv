@@ -16,9 +16,9 @@ function main {
   else
     rbenv install -s
     rbenv rehash
+    gem update --system="${GEM_VERSION}"
     gem install bundler --conservative -v "${BUNDLER_VERSION}"
     rbenv rehash
-    gem update --system
 
     mkdir -p "${DATA}/cache/rbenv"
     (cd "${BOARD_PATH}" && gtar cfz "$pth_ruby_cache" ".rbenv/versions/${ver_ruby}")
