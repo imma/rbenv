@@ -24,7 +24,7 @@ function main {
   rbenv rehash
   gem update --system="${GEM_VERSION}" || true
   rbenv rehash
-  gem install --conservative -f bundler -v "${BUNDLER_VERSION}" || true
+  gem install -f bundler -v "${BUNDLER_VERSION}" || true
   rbenv rehash
 }
 
