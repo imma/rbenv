@@ -17,9 +17,6 @@ function main {
   
   cd "$shome/bin"
   (set +f; ln -nfs ../vendor/ruby-build/bin/* "$shome/bin/")
-
-  git clone git@github.com:rbenv/rbenv-default-gems $(rbenv root)/plugins/rbenv-default-gems
-  echo "bundler ~> ${BUNDLER_VERSION}" > $(rbenv root)/default-gems
 }
 
 main "$@"
