@@ -5,7 +5,7 @@ function version {
   source "$shome/script/profile"
 
   local ver_rbenv="$(rbenv 2>&1 | head -1 | awk '{print $2}' || true)"
-  local ver_ruby_build="$(cd "$shome/vendor/ruby-build" && (git show-ref --tags | grep "$(git rev-parse HEAD)" | cut -d/ -f3 | cut -dv -f2-) || true)"
+  local ver_ruby_build="$(cd "$shome/vendor/ruby-build" 2>/dev/null && (git show-ref --tags | grep "$(git rev-parse HEAD)" | cut -d/ -f3 | cut -dv -f2-) || true)"
   jq -n \
     --arg ruby_build "$ver_ruby_build" \
     --arg rbenv "$ver_rbenv" \
