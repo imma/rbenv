@@ -17,10 +17,7 @@ function main {
     (cd "${BOARD_PATH}" && gtar xfz "$pth_ruby_cache")
     fl_already_installed=1
   else
-    make cache
-    source .bash_profile
     rbenv install -s
-    sleep 300
   fi
 
   rbenv rehash
