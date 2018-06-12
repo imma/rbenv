@@ -20,7 +20,7 @@ function main {
     (cd "${BOARD_PATH}" && gtar xfz "$pth_ruby_cache")
     fl_already_installed=1
   else
-    ${NOSUDO} sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev
+    ${NOSUDO} sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
     rbenv install -s
   fi
 
