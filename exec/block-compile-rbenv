@@ -2,7 +2,7 @@
 
 function main {
   local BUILD_DIR="$1"; shift
-  local CACHE_DIR="$1"; shift
+  local xCACHE_DIR="$1"; shift
   local ENV_DIR="$1"; shift
 
   local ver_ruby="$(rbenv local)"
