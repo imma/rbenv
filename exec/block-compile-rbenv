@@ -12,14 +12,11 @@ function main {
 
   set -x
 
+  unset RUBYOPT
+
   if [[ -f "$pth_ruby_cache" ]]; then
     (cd "${BOARD_PATH}" && gtar xfz "$pth_ruby_cache")
   else
-		case "${DISTRIB_ID}" in
-			Ubuntu)
-				${NOSUDO} sudo apt-get install ruby-bundler
-				;;
-		esac
     rbenv install -s
     mkdir -p "${DATA}/cache/rbenv"
     (cd "${BOARD_PATH}" && gtar cfz "$pth_ruby_cache" ".rbenv/versions/${ver_ruby}")
