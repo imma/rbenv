@@ -10,9 +10,6 @@ function main {
 
   local pth_ruby_cache="${DATA}/cache/rbenv/${ver_ruby}-${GEM_VERSION}-${BUNDLER_VERSION}-${ID_INSTALL}.tgz"
 
-  set -x
-
-  env | egrep -i 'gem|ruby|rb|bundle' | grep -v PATH
   unset RUBYOPT GEM_HOME
 
   local fl_already_installed
@@ -20,6 +17,8 @@ function main {
     (cd "${BOARD_PATH}" && gtar xfz "$pth_ruby_cache")
     fl_already_installed=1
   else
+    make cache
+    source .bash_profile
     rbenv install -s
     sleep 300
   fi
