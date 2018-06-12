@@ -16,7 +16,7 @@ function main {
     (cd "${BOARD_PATH}" && gtar xfz "$pth_ruby_cache")
     rbenv rehash
   else
-		case "${DISTRIB_UD}" in
+		case "${DISTRIB_ID}" in
 			Ubuntu)
 				${NOSUDO} sudo apt-get install ruby-bundler
 				;;
