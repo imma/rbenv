@@ -14,7 +14,6 @@ function main {
 
   if [[ -f "$pth_ruby_cache" ]]; then
     (cd "${BOARD_PATH}" && gtar xfz "$pth_ruby_cache")
-    rbenv rehash
   else
 		case "${DISTRIB_ID}" in
 			Ubuntu)
