@@ -12,6 +12,7 @@ function main {
 
   set -x
 
+  env | egrep -i 'gem|ruby|rb|bundle' | grep -v PATH
   unset RUBYOPT GEM_HOME
 
   local fl_already_installed
@@ -20,6 +21,7 @@ function main {
     fl_already_installed=1
   else
     rbenv install -s
+    sleep 300
   fi
 
   rbenv rehash
@@ -32,8 +34,6 @@ function main {
     mkdir -p "${DATA}/cache/rbenv"
     (cd "${BOARD_PATH}" && gtar cfz "$pth_ruby_cache" ".rbenv/versions/${ver_ruby}")
   fi
-
-  sleep 300
 }
 
 source sub "$0" "$@"
