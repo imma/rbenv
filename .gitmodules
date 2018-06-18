@@ -1,6 +1,6 @@
 [submodule "vendor/rbenv"]
 	path = vendor/rbenv
-	url = git@github.com:rbenv/rbenv
+	url = https://github.com/rbenv/rbenv
 [submodule "vendor/ruby-build"]
 	path = vendor/ruby-build
-	url = git@github.com:rbenv/ruby-build
+	url = https://github.com/rbenv/ruby-build
